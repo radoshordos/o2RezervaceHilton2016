@@ -8,6 +8,7 @@
   "license": "MIT",
   "require": {
     "laravel/framework": "4.2.*",
+    "barryvdh/laravel-ide-helper": "1.11.*",
     "twbs/bootstrap": "3.3.*",
     "components/jquery": "1.12.*",
     "dg/adminer-custom": "1.*"
@@ -29,6 +30,7 @@
     ],
     "post-update-cmd": [
       "php artisan clear-compiled",
+      "php artisan ide-helper:generate",
       "php artisan optimize"
     ],
     "post-create-project-cmd": [

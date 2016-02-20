@@ -42,20 +42,26 @@ class HomeController extends BaseController
             }
         }
 
-        return \View::make('index', [
-            'buy_time'                   => $vstupenky->isBuyTime(),
-            'buy_time_after_begin'       => $vstupenky->isAfterBuyTimeBegin(),
-            'buy_time_before_end'        => $vstupenky->isBeforeBuyTimeEnd(),
-            'buy_unsubscribe_before_end' => $vstupenky->isBeforeUnsubscribeTimeEnd(),
-            'volne_vstupenky'            => $vstupenky->getCountTiketsAvailable(),
-            'is_visitor'                 => $vstupenky->isVisitor(),
-        ]);
+        if ($vstupenky->isAfterBuyTimeBegin() === false) {
+            return \View::make('rezervace_pred');
+        } elseif ($vstupenky->isBeforeBuyTimeEnd() === false) {
+            return \View::make('rezervace_po');
+        } else {
+            return \View::make('rezervace.form', [
+                'buy_time'                   => $vstupenky->isBuyTime(),
+                'buy_time_after_begin'       => $vstupenky->isAfterBuyTimeBegin(),
+                'buy_time_before_end'        => $vstupenky->isBeforeBuyTimeEnd(),
+                'buy_unsubscribe_before_end' => $vstupenky->isBeforeUnsubscribeTimeEnd(),
+                'volne_vstupenky'            => $vstupenky->getCountTiketsAvailable(),
+                'is_visitor'                 => $vstupenky->isVisitor(),
+            ]);
+        }
     }
 
     public function uspesneZakoupeno()
     {
         $vstupenky = new Vstupenky();
-        return \View::make('index', [
+        return \View::make('rezervace.success', [
             'buy_time'                   => $vstupenky->isBuyTime(),
             'buy_time_after_begin'       => $vstupenky->isAfterBuyTimeBegin(),
             'buy_time_before_end'        => $vstupenky->isBeforeBuyTimeEnd(),
