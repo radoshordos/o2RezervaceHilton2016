@@ -3,6 +3,7 @@ use Db\Rezervace;
 
 class Vstupenky extends Rezervace
 {
+    CONST TIMEZONE = "Europe/Prague";
     CONST FREE_TIKETS = 1000;
 
     public function getCountTiketsAvailable()
@@ -21,22 +22,22 @@ class Vstupenky extends Rezervace
 
     public function isAfterBuyTimeBegin()
     {
-        $now = \Carbon\Carbon::now("Europe/Prague");
-        $buy = \Carbon\Carbon::create(2016, 4, 23, 14, 0, 0, "Europe/Prague");
+        $now = \Carbon\Carbon::now(self::TIMEZONE);
+        $buy = \Carbon\Carbon::create(2016, 2, 20, 14, 0, 0, self::TIMEZONE);
         return $now->gt($buy);
     }
 
     public function isBeforeBuyTimeEnd()
     {
-        $now = \Carbon\Carbon::now("Europe/Prague");
-        $buy = \Carbon\Carbon::create(2016, 4, 29, 14, 0, 0, "Europe/Prague");
+        $now = \Carbon\Carbon::now(self::TIMEZONE);
+        $buy = \Carbon\Carbon::create(2016, 2, 29, 14, 0, 0, self::TIMEZONE);
         return $now->lt($buy);
     }
 
     public function isBeforeUnsubscribeTimeEnd()
     {
-        $now = \Carbon\Carbon::now("Europe/Prague");
-        $buy = \Carbon\Carbon::create(2016, 4, 29, 14, 0, 0, "Europe/Prague");
+        $now = \Carbon\Carbon::now(self::TIMEZONE);
+        $buy = \Carbon\Carbon::create(2016, 2, 29, 14, 0, 0, self::TIMEZONE);
         return $now->lt($buy);
     }
 }

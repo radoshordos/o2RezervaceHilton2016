@@ -25,7 +25,7 @@
                 <p>Svůj závazný zájem, prosím, potvrďte v e-mailu, který bude doručen do vaší služební e-mailové schránky.</p>
                 <p><i>Odborové organizace Prahy a Středočeského kraje</i></p>
                 <br/>
-                <p align="center"><strong style="color: red">Registrace bude aktivní od úterý 23. února 2016, 14:00</strong>
+                <p align="center"><strong style="color: red">Registrace byla ukončena</strong>
             </div>
         </div>
     </div>

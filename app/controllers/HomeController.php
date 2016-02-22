@@ -58,6 +58,7 @@ class HomeController extends BaseController
         }
     }
 
+
     public function uspesneZakoupeno()
     {
         $vstupenky = new Vstupenky();
@@ -68,6 +69,15 @@ class HomeController extends BaseController
             'buy_unsubscribe_before_end' => $vstupenky->isBeforeUnsubscribeTimeEnd(),
             'volne_vstupenky'            => $vstupenky->getCountTiketsAvailable(),
             'is_visitor'                 => $vstupenky->isVisitor(),
+        ]);
+    }
+
+    public function odhlaseniRegistrace()
+    {
+        $vstupenky = new Vstupenky();
+        return \View::make('rezervace.odhlaseni', [
+            'volne_vstupenky' => $vstupenky->getCountTiketsAvailable(),
+            'is_visitor'      => $vstupenky->isVisitor()
         ]);
     }
 }
